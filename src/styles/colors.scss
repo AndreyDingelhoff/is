@@ -1,13 +1,32 @@
+/* src/styles/colors.scss */
 :root {
+  /* Primary */
   --color-primary: #006cbb;
+  --color-primary-hover: #004d84;
+  --color-primary-disabled: #d0e8f7;
 
-  --color-white: #ffffff;
-  --color-gray-light: #eeeeee;
-  --color-gray: #cccccc;
-  --color-gray-dark: #777777;
-  --color-black: #000000;
+  /* Secondary */
+  --color-secondary: #6c757d;
+  --color-secondary-hover: #495057;
+  --color-secondary-disabled: #e2e6ea;
 
+  /* Neutral */
+  --color-white: #fff;
+  --color-gray-100: #f8f9fa;
+  --color-gray-200: #e9ecef;
+  --color-gray-300: #dee2e6;
+  --color-gray-400: #ced4da;
+  --color-gray-500: #adb5bd;
+  --color-gray-600: #6c757d;
+  --color-gray-700: #495057;
+
+  /* Status */
+  --color-error: #d40019;
   --color-success: #01bd78;
 
-  --color-error: #d40019;
+  /* Layout */
+  --border-radius-md: 6px;
+  --border-width: 1px;
+  --transition-fast: 0.2s ease;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
 }

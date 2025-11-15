@@ -1,56 +1,68 @@
+<!-- src/components/UiButton/UiButton.vue -->
 <template>
-  <button :class="$style.button" :data-layout="props.layout" :disabled="props.isDisabled" :type="props.type">
-    <slot></slot>
+  <button
+    :type="props.type"
+    :disabled="props.isDisabled"
+    :data-layout="props.layout"
+    class="ui-button"
+  >
+    <slot />
   </button>
 </template>
 
 <script setup lang="ts">
 interface IProps {
   layout?: 'primary' | 'secondary';
-  type?: 'submit' | 'button';
   isDisabled?: boolean;
+  type?: 'submit' | 'button';
 }
 
 const props = withDefaults(defineProps<IProps>(), {
   layout: 'primary',
+  isDisabled: false,
   type: 'button',
 });
 </script>
 
-<style module lang="scss">
-.button {
-  position: relative;
+<style lang="scss">
+.ui-button {
   display: inline-flex;
-  gap: 8px;
   align-items: center;
   justify-content: center;
-  height: 40px;
-  padding: 16px 32px;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #ffffff;
-  background: #ff69b4; 
-  border: none;
-  border-radius: 16px;
-  cursor: pointer; 
-  transition: background-color 0.2s ease;
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  border: var(--border-width) solid transparent;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), opacity 0.1s;
+  background-color: var(--color-primary);
+  color: var(--color-white);
 
-  &:hover:not(:disabled) {
-    background: #ff5ca8; 
+  &[data-layout='secondary'] {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
   }
 
   &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed; 
+    cursor: not-allowed;
+    opacity: 1;
+    &[data-layout='primary'] {
+      background-color: var(--color-primary-disabled);
+      color: var(--color-gray-500);
+    }
+    &[data-layout='secondary'] {
+      background-color: var(--color-secondary-disabled);
+      color: var(--color-gray-600);
+    }
   }
 
-  &[data-layout='secondary'] {
-    color: #ff69b4;
-    background: transparent;
-    border: 2px solid #ff69b4;
-
-    &:hover:not(:disabled) {
-      background: rgba(255, 105, 180, 0.1);
+  &:not(:disabled):hover {
+    &[data-layout='primary'] {
+      background-color: var(--color-primary-hover);
+    }
+    &[data-layout='secondary'] {
+      background-color: var(--color-secondary-hover);
     }
   }
 }
